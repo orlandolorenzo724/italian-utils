@@ -23,11 +23,18 @@ The `AnagraficaUtils` class provides utility methods for handling and validating
 - **Name Normalization**: `normalizeName(String input)` – Capitalizes the first letter and makes the rest lowercase to standardize names and surnames.
 - **Name Length Validation**: `isNameLengthValid(String name, int minLength, int maxLength)` – Checks if a name meets specified minimum and maximum length constraints.
 
+#### Partita IVA: Italian VAT Number
+
+The `PartitaIVAUtils` class offers methods to validate and format Italian VAT numbers (Partita IVA). The features include:
+
+- **Partita IVA Validation**: `isValidPartitaIVA(String partitaIVA)` – Validates the structure and check digit of a given Partita IVA, ensuring it conforms to official standards.
+- **Partita IVA Formatting**: `formatPartitaIVA(String partitaIVA)` – Formats a given Partita IVA by adding the "IT" country prefix, if not already present.
+
 ### Planned Features
 
 The goal of this project is to provide a comprehensive toolkit for handling various Italian-specific data:
+
 - **Codice Fiscale**: Calculation and validation of Italian tax codes.
-- **Partita IVA**: Validation and formatting of Italian VAT numbers.
 - **IBAN and SWIFT**: Validation and formatting of banking information.
 - **Phone Numbers**: Validation and formatting of Italian phone numbers.
 - **Documents**: Handling Italian documents like identity cards, health cards, and driving licenses.
