@@ -30,12 +30,19 @@ The `PartitaIVAUtils` class offers methods to validate and format Italian VAT nu
 - **Partita IVA Validation**: `isValidPartitaIVA(String partitaIVA)` – Validates the structure and check digit of a given Partita IVA, ensuring it conforms to official standards.
 - **Partita IVA Formatting**: `formatPartitaIVA(String partitaIVA)` – Formats a given Partita IVA by adding the "IT" country prefix, if not already present.
 
+#### IBAN and SWIFT: Banking Information
+
+The `BankingUtils` class provides methods to validate and format IBAN and SWIFT/BIC codes used in international banking transactions.
+
+- **IBAN Validation**: `isValidIBAN(String iban)` – Validates the IBAN structure and checksum using the international IBAN standard.
+- **IBAN Formatting**: `formatIBAN(String iban)` – Formats an IBAN by grouping it into blocks of four characters for improved readability.
+- **SWIFT/BIC Validation**: `isValidSWIFT(String swift)` – Validates SWIFT/BIC codes based on length and structure requirements (either 8 or 11 characters).
+
 ### Planned Features
 
 The goal of this project is to provide a comprehensive toolkit for handling various Italian-specific data:
 
 - **Codice Fiscale**: Calculation and validation of Italian tax codes.
-- **IBAN and SWIFT**: Validation and formatting of banking information.
 - **Phone Numbers**: Validation and formatting of Italian phone numbers.
 - **Documents**: Handling Italian documents like identity cards, health cards, and driving licenses.
 
