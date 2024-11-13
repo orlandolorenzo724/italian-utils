@@ -38,13 +38,26 @@ The `BankingUtils` class provides methods to validate and format IBAN and SWIFT/
 - **IBAN Formatting**: `formatIBAN(String iban)` – Formats an IBAN by grouping it into blocks of four characters for improved readability.
 - **SWIFT/BIC Validation**: `isValidSWIFT(String swift)` – Validates SWIFT/BIC codes based on length and structure requirements (either 8 or 11 characters).
 
+#### Italian Documents: Identity Cards and Health Insurance Cards
+
+The library includes utilities for handling Italian personal documents:
+
+- **Identity Card (Carta d'Identità Elettronica - CIE)**: The `IdentityCardUtils` class provides methods to validate the serial number format and ensure logical consistency between issue and expiration dates.
+   - **Serial Number Validation**: `isValidCIESerial(String serialNumber)` – Validates that the serial number follows the format of two letters, five digits, and two letters (e.g., AB12345CD).
+   - **Comprehensive Validation**: `isValidCIE(String serialNumber, LocalDate issueDate, LocalDate expirationDate)` – Validates the serial number format and checks that the issue date is before the expiration date.
+
+- **Health Insurance Card (Tessera Sanitaria)**: The `HealthInsuranceCardUtils` class offers methods to validate the card's serial number and check its expiration status.
+   - **Serial Number Validation**: `isValidHICSerial(String serialNumber)` – Ensures the serial number consists of exactly 20 numeric digits.
+   - **Expiration Date Check**: `isCardCurrentlyValid(LocalDate expirationDate)` – Determines if the card is currently valid based on its expiration date.
+   - **Comprehensive Validation**: `isValidHealthInsuranceCard(String serialNumber, LocalDate expirationDate)` – Validates both the serial number format and the card's expiration status.
+
 ### Planned Features
 
 The goal of this project is to provide a comprehensive toolkit for handling various Italian-specific data:
 
 - **Codice Fiscale**: Calculation and validation of Italian tax codes.
 - **Phone Numbers**: Validation and formatting of Italian phone numbers.
-- **Documents**: Handling Italian documents like identity cards, health cards, and driving licenses.
+- **Additional Documents**: Handling other Italian documents like driving licenses.
 
 ## Contributing
 
