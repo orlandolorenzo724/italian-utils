@@ -30,7 +30,7 @@ public class HealthInsuranceCardUtilsTest {
      * Tests the validation of an invalid Health Insurance Card serial number with incorrect length.
      */
     @Test
-    public void testInvalidHICSerial_Length() {
+    public void testInvalidHICSerialLength() {
         String invalidSerial = "AB12345678901234567"; // 19 characters
         assertFalse(HealthInsuranceCardUtils.isValidHICSerial(invalidSerial),
                 "Expected the serial number to be invalid due to incorrect length.");
@@ -40,7 +40,7 @@ public class HealthInsuranceCardUtilsTest {
      * Tests the validation of an invalid Health Insurance Card serial number with special characters.
      */
     @Test
-    public void testInvalidHICSerial_SpecialCharacters() {
+    public void testInvalidHICSerialSpecialCharacters() {
         String invalidSerial = "AB1234567890!@#$%^&*";
         assertFalse(HealthInsuranceCardUtils.isValidHICSerial(invalidSerial),
                 "Expected the serial number to be invalid due to special characters.");
@@ -50,7 +50,7 @@ public class HealthInsuranceCardUtilsTest {
      * Tests the validation of a Health Insurance Card with a future expiration date.
      */
     @Test
-    public void testCardCurrentlyValid_FutureDate() {
+    public void testCardCurrentlyValidFutureDate() {
         LocalDate futureDate = LocalDate.now().plusYears(1);
         assertTrue(HealthInsuranceCardUtils.isCardCurrentlyValid(futureDate),
                 "Expected the card to be valid with a future expiration date.");
@@ -60,7 +60,7 @@ public class HealthInsuranceCardUtilsTest {
      * Tests the validation of a Health Insurance Card with a past expiration date.
      */
     @Test
-    public void testCardCurrentlyValid_PastDate() {
+    public void testCardCurrentlyValidPastDate() {
         LocalDate pastDate = LocalDate.now().minusYears(1);
         assertFalse(HealthInsuranceCardUtils.isCardCurrentlyValid(pastDate),
                 "Expected the card to be invalid with a past expiration date.");
@@ -81,7 +81,7 @@ public class HealthInsuranceCardUtilsTest {
      * Tests the comprehensive validation of an invalid Health Insurance Card due to serial number.
      */
     @Test
-    public void testInvalidHealthInsuranceCard_Serial() {
+    public void testInvalidHealthInsuranceCardSerial() {
         String invalidSerial = "AB12345678901234567"; // 19 characters
         LocalDate futureDate = LocalDate.now().plusYears(1);
         assertFalse(HealthInsuranceCardUtils.isValidHealthInsuranceCard(invalidSerial, futureDate),
@@ -92,8 +92,8 @@ public class HealthInsuranceCardUtilsTest {
      * Tests the comprehensive validation of an invalid Health Insurance Card due to expiration date.
      */
     @Test
-    public void testInvalidHealthInsuranceCard_ExpirationDate() {
-        String validSerial = "AB123456789012345678";
+    public void testInvalidHealthInsuranceCardExpirationDate() {
+        String validSerial = "00123456789012345678";
         LocalDate pastDate = LocalDate.now().minusYears(1);
         assertFalse(HealthInsuranceCardUtils.isValidHealthInsuranceCard(validSerial, pastDate),
                 "Expected the Health Insurance Card to be invalid due to expiration date.");

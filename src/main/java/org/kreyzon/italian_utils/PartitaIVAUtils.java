@@ -14,6 +14,13 @@ import java.util.regex.Pattern;
  */
 public class PartitaIVAUtils {
 
+    /**
+     * Private constructor to prevent instantiation of this utility class.
+     */
+    private PartitaIVAUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     // Regular expression pattern to match exactly 11 digits
     private static final Pattern PARTITA_IVA_PATTERN = Pattern.compile("\\d{11}");
 

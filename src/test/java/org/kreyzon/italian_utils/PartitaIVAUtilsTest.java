@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class PartitaIVAUtilsTest {
 
-    // Existing validation tests...
+    private static final String VALID_PARTITA_IVA = "IT12345678903";
 
     /**
      * Tests the formatting of a valid Partita IVA without the "IT" prefix.
@@ -23,8 +23,7 @@ public class PartitaIVAUtilsTest {
     @Test
     public void testFormatPartitaIVAWithoutPrefix() {
         String partitaIVA = "12345678903";
-        String expectedFormatted = "IT12345678903";
-        assertEquals(expectedFormatted, PartitaIVAUtils.formatPartitaIVA(partitaIVA),
+        assertEquals(VALID_PARTITA_IVA, PartitaIVAUtils.formatPartitaIVA(partitaIVA),
                 "Expected the formatted Partita IVA to include the 'IT' prefix.");
     }
 
@@ -33,9 +32,7 @@ public class PartitaIVAUtilsTest {
      */
     @Test
     public void testFormatPartitaIVAWithPrefix() {
-        String partitaIVA = "IT12345678903";
-        String expectedFormatted = "IT12345678903";
-        assertEquals(expectedFormatted, PartitaIVAUtils.formatPartitaIVA(partitaIVA),
+        assertEquals(VALID_PARTITA_IVA, PartitaIVAUtils.formatPartitaIVA(VALID_PARTITA_IVA),
                 "Expected the formatted Partita IVA to retain the 'IT' prefix.");
     }
 
