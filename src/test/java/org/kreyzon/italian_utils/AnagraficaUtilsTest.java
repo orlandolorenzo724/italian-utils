@@ -22,6 +22,19 @@ public class AnagraficaUtilsTest {
     private static final String SURNAME_VERDI = "Verdi";
 
     /**
+     * Tests that the private constructor throws an IllegalStateException.
+     */
+    @Test
+    public void testPrivateConstructor() {
+        assertThrows(Exception.class, () -> {
+            // Use reflection to access the private constructor
+            java.lang.reflect.Constructor<AnagraficaUtils> constructor = AnagraficaUtils.class.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            constructor.newInstance();
+        }, "Expected IllegalStateException to be thrown when instantiating AnagraficaUtils");
+    }
+
+    /**
      * Tests that valid names are correctly recognized.
      * Valid names contain only letters and may have multiple parts (e.g., first and middle names).
      */
