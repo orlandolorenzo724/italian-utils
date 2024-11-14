@@ -15,6 +15,11 @@ import static org.junit.jupiter.api.Assertions.*;
  * Since: 2024-11-12
  */
 public class AnagraficaUtilsTest {
+    
+    private static final String NAME = "Mario";
+    private static final String SURNAME = "Rossi";
+
+    private static final String SURNAME_VERDI = "Verdi";
 
     /**
      * Tests that valid names are correctly recognized.
@@ -22,7 +27,7 @@ public class AnagraficaUtilsTest {
      */
     @Test
     public void testValidName() {
-        assertTrue(AnagraficaUtils.isValidName("Mario"));
+        assertTrue(AnagraficaUtils.isValidName(NAME));
         assertTrue(AnagraficaUtils.isValidName("Anna Maria"));
     }
 
@@ -42,8 +47,8 @@ public class AnagraficaUtilsTest {
      */
     @Test
     public void testValidSurname() {
-        assertTrue(AnagraficaUtils.isValidSurname("Rossi"));
-        assertTrue(AnagraficaUtils.isValidSurname("Verdi"));
+        assertTrue(AnagraficaUtils.isValidSurname(SURNAME));
+        assertTrue(AnagraficaUtils.isValidSurname(SURNAME_VERDI));
     }
 
     /**
@@ -116,8 +121,8 @@ public class AnagraficaUtilsTest {
      */
     @Test
     public void testFormatFullName() {
-        assertEquals("Sig. Mario Rossi", AnagraficaUtils.formatFullName("Sig.", "Mario", "Rossi"));
-        assertEquals("Anna Verdi", AnagraficaUtils.formatFullName(null, "Anna", "Verdi"));
+        assertEquals("Sig. Mario Rossi", AnagraficaUtils.formatFullName("Sig.", NAME, SURNAME));
+        assertEquals("Anna Verdi", AnagraficaUtils.formatFullName(null, "Anna", SURNAME_VERDI));
     }
 
     /**
@@ -125,8 +130,8 @@ public class AnagraficaUtilsTest {
      */
     @Test
     public void testGetInitials() {
-        assertEquals("MR", AnagraficaUtils.getInitials("Mario", "Rossi"));
-        assertEquals("AV", AnagraficaUtils.getInitials("Anna", "Verdi"));
+        assertEquals("MR", AnagraficaUtils.getInitials(NAME, SURNAME));
+        assertEquals("AV", AnagraficaUtils.getInitials("Anna", SURNAME_VERDI));
     }
 
     /**
@@ -135,7 +140,7 @@ public class AnagraficaUtilsTest {
      */
     @Test
     public void testNormalizeName() {
-        assertEquals("Mario", AnagraficaUtils.normalizeName("mario"));
+        assertEquals(NAME, AnagraficaUtils.normalizeName(NAME));
         assertEquals("Anna", AnagraficaUtils.normalizeName("ANNA"));
     }
 
@@ -145,7 +150,7 @@ public class AnagraficaUtilsTest {
      */
     @Test
     public void testNameLengthValid() {
-        assertTrue(AnagraficaUtils.isNameLengthValid("Mario", 2, 10));
+        assertTrue(AnagraficaUtils.isNameLengthValid(NAME, 2, 10));
         assertFalse(AnagraficaUtils.isNameLengthValid("M", 2, 10));
         assertFalse(AnagraficaUtils.isNameLengthValid("Mariorossigiuseppe", 2, 10));
     }

@@ -16,17 +16,20 @@ import java.time.LocalDate;
  */
 public class IdentityCardUtilsTest {
 
+    private static final String SERIAL_NUMBER_ONE = "AB12345CD";
+
+    private static final String SERIAL_NUMBER_TWO = "A123456CD";
+
     /**
      * Tests the comprehensive validation of a valid CIE, including correct serial number format
      * and logically consistent issue and expiration dates.
      */
     @Test
     public void testValidCIE() {
-        String validSerial = "AB12345CD";
         LocalDate issueDate = LocalDate.of(2022, 1, 1);
         LocalDate expirationDate = LocalDate.of(2032, 1, 1);
 
-        assertTrue(IdentityCardUtils.isValidCIE(validSerial, issueDate, expirationDate),
+        assertTrue(IdentityCardUtils.isValidCIE(SERIAL_NUMBER_ONE, issueDate, expirationDate),
                 "Expected the CIE details to be valid.");
     }
 
@@ -35,12 +38,11 @@ public class IdentityCardUtilsTest {
      * The serial number does not match the required pattern, so the validation should fail.
      */
     @Test
-    public void testInvalidCIE_SerialNumber() {
-        String invalidSerial = "A123456CD"; // Invalid format
+    public void testInvalidCIESerialNumber() {
         LocalDate issueDate = LocalDate.of(2022, 1, 1);
         LocalDate expirationDate = LocalDate.of(2032, 1, 1);
 
-        assertFalse(IdentityCardUtils.isValidCIE(invalidSerial, issueDate, expirationDate),
+        assertFalse(IdentityCardUtils.isValidCIE(SERIAL_NUMBER_TWO, issueDate, expirationDate),
                 "Expected the CIE to be invalid due to serial number format.");
     }
 
@@ -49,12 +51,11 @@ public class IdentityCardUtilsTest {
      * This is an invalid scenario, so the validation should fail.
      */
     @Test
-    public void testInvalidCIE_IssueDateAfterExpiration() {
-        String validSerial = "AB12345CD";
+    public void testInvalidCIEIssueDateAfterExpiration() {
         LocalDate issueDate = LocalDate.of(2033, 1, 1); // Issue date after expiration
         LocalDate expirationDate = LocalDate.of(2032, 1, 1);
 
-        assertFalse(IdentityCardUtils.isValidCIE(validSerial, issueDate, expirationDate),
+        assertFalse(IdentityCardUtils.isValidCIE(SERIAL_NUMBER_ONE, issueDate, expirationDate),
                 "Expected the CIE to be invalid due to issue date after expiration date.");
     }
 
@@ -63,13 +64,11 @@ public class IdentityCardUtilsTest {
      * Since both dates are required, the validation should fail if either is null.
      */
     @Test
-    public void testInvalidCIE_NullDates() {
-        String validSerial = "AB12345CD";
-
-        assertFalse(IdentityCardUtils.isValidCIE(validSerial, null, LocalDate.of(2032, 1, 1)),
+    public void testInvalidCIENullDates() {
+        assertFalse(IdentityCardUtils.isValidCIE(SERIAL_NUMBER_ONE, null, LocalDate.of(2032, 1, 1)),
                 "Expected the CIE to be invalid due to null issue date.");
 
-        assertFalse(IdentityCardUtils.isValidCIE(validSerial, LocalDate.of(2022, 1, 1), null),
+        assertFalse(IdentityCardUtils.isValidCIE(SERIAL_NUMBER_ONE, LocalDate.of(2022, 1, 1), null),
                 "Expected the CIE to be invalid due to null expiration date.");
     }
 }

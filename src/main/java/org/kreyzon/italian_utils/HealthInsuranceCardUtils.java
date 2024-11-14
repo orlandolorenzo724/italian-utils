@@ -15,6 +15,13 @@ import java.util.regex.Pattern;
  */
 public class HealthInsuranceCardUtils {
 
+    /**
+     * Private constructor to prevent instantiation of this utility class.
+     */
+    private HealthInsuranceCardUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     // Regular expression pattern to match the Health Insurance Card serial number format: 20 numeric digits
     private static final Pattern HIC_SERIAL_PATTERN = Pattern.compile("^\\d{20}$");
 

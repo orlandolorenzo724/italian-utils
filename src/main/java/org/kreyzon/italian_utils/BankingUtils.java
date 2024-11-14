@@ -11,6 +11,13 @@ import java.util.regex.Pattern;
  */
 public class BankingUtils {
 
+    /**
+     * Private constructor to prevent instantiation of this utility class.
+     */
+    private BankingUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     // Regular expression patterns for IBAN and SWIFT/BIC codes
     private static final Pattern IBAN_PATTERN = Pattern.compile("^[A-Z]{2}\\d{2}[A-Z0-9]{1,30}$");
     private static final Pattern SWIFT_PATTERN = Pattern.compile("^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?$");

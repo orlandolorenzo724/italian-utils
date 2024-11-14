@@ -15,6 +15,13 @@ import java.util.regex.Pattern;
  */
 public class IdentityCardUtils {
 
+    /**
+     * Private constructor to prevent instantiation of this utility class.
+     */
+    private IdentityCardUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     // Regular expression pattern to match the CIE serial number format: two letters, five digits, two letters
     private static final Pattern CIE_SERIAL_PATTERN = Pattern.compile("^[A-Z]{2}\\d{5}[A-Z]{2}$");
 
@@ -49,11 +56,6 @@ public class IdentityCardUtils {
         if (issueDate == null || expirationDate == null) {
             return false;
         }
-        if (!issueDate.isBefore(expirationDate)) {
-            return false;
-        }
-
-        // Additional checks can be added as needed
-        return true;
+        return issueDate.isBefore(expirationDate);
     }
 }

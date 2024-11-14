@@ -16,6 +16,14 @@ import java.time.Period;
 public class AnagraficaUtils {
 
     /**
+     * Private constructor to prevent instantiation of this utility class.
+     */
+    private AnagraficaUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
+
+    /**
      * Validates a name, allowing only letters and spaces.
      * Useful for handling cases with middle names or multi-part first names.
      *
