@@ -23,6 +23,9 @@ jobs:
           java-version: '23'
           distribution: 'temurin'
 
+      - name: Maven verify
+        run: mvn clean verify
+
       - name: Build with Maven
         run: mvn clean install
 
