@@ -18,6 +18,20 @@ public class PartitaIVAUtilsTest {
     private static final String VALID_PARTITA_IVA = "IT12345678903";
 
     /**
+     * Tests that the private constructor throws an IllegalStateException.
+     */
+    @Test
+    public void testPrivateConstructor() {
+        assertThrows(Exception.class, () -> {
+            // Use reflection to access the private constructor
+            java.lang.reflect.Constructor<PartitaIVAUtils> constructor = PartitaIVAUtils.class.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            constructor.newInstance();
+        }, "Expected IllegalStateException to be thrown when instantiating AnagraficaUtils");
+    }
+
+
+    /**
      * Tests the formatting of a valid Partita IVA without the "IT" prefix.
      */
     @Test

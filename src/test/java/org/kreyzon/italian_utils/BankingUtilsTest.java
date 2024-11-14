@@ -16,6 +16,19 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BankingUtilsTest {
 
     /**
+     * Tests that the private constructor throws an IllegalStateException.
+     */
+    @Test
+    public void testPrivateConstructor() {
+        assertThrows(Exception.class, () -> {
+            // Use reflection to access the private constructor
+            java.lang.reflect.Constructor<BankingUtils> constructor = BankingUtils.class.getDeclaredConstructor();
+            constructor.setAccessible(true);
+            constructor.newInstance();
+        }, "Expected IllegalStateException to be thrown when instantiating AnagraficaUtils");
+    }
+
+    /**
      * Tests the validation of a valid IBAN.
      */
     @Test
